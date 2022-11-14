@@ -45,6 +45,11 @@ namespace PlantITTestingNewZealand.PageObjects
 
 
 
+        [FindsBy(How = How.CssSelector, Using = "div.alert.alert-success")]
+        private IWebElement successMessage_Text;
+        private By successMessage_Thanks_Text_By = By.XPath("//div[contains(text(),\"\")]/child::strong[contains(text(),'Thanks')]");
+
+        private By sendingFeedbackText_By = By.XPath("//*[contains(text(), 'Sending Feedback')");
         /// <summary>
         /// 
         /// </summary>
@@ -118,6 +123,15 @@ namespace PlantITTestingNewZealand.PageObjects
                     continue;
                 }
             }
+        }
+
+        public void validateSuccessContactMessage() {
+            base.wait.Until(ExpectedConditions.InvisibilityOfElementLocated(sendingFeedbackText_By));
+            base.wait.Until(ExpectedConditions.ElementIsVisible(successMessage_Thanks_Text_By));
+            String text = successMessage_Text.Text;
+            TestContext.WriteLine(text);
+            logger.Info(text);
+            ExtentTestManager.GetTest().Log(Status.Pass, "Success Message is thrown", ScreenshotUtility.CaptureScreenshot(this.driver, "Screenshot Successs"));
         }
     }
 }
