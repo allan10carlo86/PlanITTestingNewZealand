@@ -22,6 +22,8 @@ namespace PlantITTestingNewZealand.BaseClass
         //public LoginPage loginPage;
         public HomePage homePage;
         public ContactPage contactPage;
+        public BuyPage buyPage;
+        public CheckOutPage checkoutPage;
         //Logger Notepad Text
         public static Logger logger;
 
@@ -56,6 +58,8 @@ namespace PlantITTestingNewZealand.BaseClass
             logger.Info("Instantiate All Web Pages");
             homePage = new HomePage(this.driver.Value);
             contactPage = new ContactPage(this.driver.Value);
+            buyPage = new BuyPage(this.driver.Value);
+            checkoutPage = new CheckOutPage(this.driver.Value);
         }
 
 
