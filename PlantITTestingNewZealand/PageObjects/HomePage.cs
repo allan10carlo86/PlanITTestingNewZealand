@@ -21,6 +21,9 @@ namespace PlantITTestingNewZealand.PageObjects
         private IWebElement contact_link;
         private By contact_link_by = By.XPath("//a[@href='#/contact']");
 
+        [FindsBy(How = How.LinkText, Using = "Start Shopping »")]
+        private IWebElement startShopping_Button;
+        private By startShopping_Button_by = By.LinkText("Start Shopping »");
 
         public void clickOnContact()
         {
@@ -28,6 +31,13 @@ namespace PlantITTestingNewZealand.PageObjects
             base.wait.Until(ExpectedConditions.ElementIsVisible(contact_link_by));
             contact_link.Click();
             ExtentTestManager.GetTest().Log(Status.Pass, "Clicked on the Contact Link");
+        }
+
+        public void clickStartShopping() {
+            TestContext.WriteLine("Run clickStartShopping");
+            base.wait.Until(ExpectedConditions.ElementIsVisible(startShopping_Button_by));
+            startShopping_Button.Click();
+            ExtentTestManager.GetTest().Log(Status.Pass, "Clicked on the Start Shopping Link");
         }
     }
 }

@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using Logger = NLog.Logger;
+using PlantITTestingNewZealand.Utilities;
 
 
 namespace PlantITTestingNewZealand.PageObjects.BasePage
@@ -15,6 +16,7 @@ namespace PlantITTestingNewZealand.PageObjects.BasePage
         public static Logger logger;
         public WebDriverWait wait;
         public ExtentTest testExtent;
+        public ExcelReader excelReader;
 
         public BaseAbstractPage(IWebDriver driver)
         {
@@ -24,6 +26,7 @@ namespace PlantITTestingNewZealand.PageObjects.BasePage
             this.wait = new WebDriverWait(this.driver, TimeSpan.FromSeconds(30));
             //testExtent = extentTest_param;
             logger = LogManager.GetCurrentClassLogger();
+            excelReader = new ExcelReader();
   
         }
     }
